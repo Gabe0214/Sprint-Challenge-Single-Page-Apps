@@ -22,6 +22,7 @@ export default function WelcomePage() {
         />
         </ImgContainer>
         <NavLink to ="/characters">Character List</NavLink>
+        <NavLink to ="/search">Search</NavLink>
       </header>
     </section>
   );

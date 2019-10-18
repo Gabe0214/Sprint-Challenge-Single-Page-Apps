@@ -1,34 +1,55 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import CharacterCard from './CharacterCard'
 
 
 
 
-export default function SearchForm() {
-  const [characters, setCharacters] = useState([])
- const [searchTerm, setSearchTerm] = useState("")
- const [searchResults, setSearchResults] = useState([])
-
-  useEffect (() => {
-    axios.get('https://rickandmortyapi.com/api/character/')
-    .then(res => {setCharacters(res.data.results)})
-    
-    
-    const results = characters.filter(character => 
-      character.includes(searchTerm.toLowerCase())
-      
-      )
-      setSearchResults(results);
-  }, [searchTerm])
+export default function SearchForm(props) {
+  const [data, setData] = useState([])
+  const [query, setQuery] = useState("")   
+ 
+ useEffect(() => {
+   axios.get("https://rickandmortyapi.com/api/character/")
+   .then(response => {
+     const character = response.data.results.filter(value =>
+      value.name.toLowerCase().includes(query.toLowerCase())
+      );
+      setData(character)
+   })
+ },[query])
+ 
  const handleChange = event => {
-   setSearchTerm(event.target.value)
+   setQuery(event.target.value)
  }
   return (
     <section className="search-form">
      <form>
-       <input type="text" name="characters" placeholder ="search" value ={searchTerm}
+       <input type="text" id="name" placeholder ="search" value ={query}
        onChange={handleChange}/>
      </form>
+     {data.map((value=> {
+       return (
+         <CharacterCard key ={value.id} name ={value.name} species ={value.species} status={value.status}/>
+       )
+     }))}
     </section>
   );
 }
+
+
+
+
+
+
+
+
+
+// How do I submit a form?
+
+// What do I do after I submit the form?
+
+
+// What am I trying to filter through? 
+
+// console props

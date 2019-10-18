@@ -1,11 +1,11 @@
 import React from "react";
 
- const CharacterCard = props => {
+ const CharacterCard = ({name, status, species}) => {
   return (
-    <div key ={props.id}>
-      <h2>{props.value.name}</h2>
-      <p> Status: {props.value.status}</p>
-      <p> Species: {props.value.species}</p>
+    <div>
+      <h2>{name}</h2>
+      <p> Status: {status}</p>
+      <p> Species: {species}</p>
     </div>
   )
 }
