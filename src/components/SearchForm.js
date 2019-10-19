@@ -1,6 +1,21 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import CharacterCard from './CharacterCard'
+import styled from 'styled-components'
+import {NavContainer, NavStyle} from './WelcomePage'; 
+
+const InputContainer = styled.div`
+display: flex;
+flex-direction:row;
+justify-content: center; 
+
+`
+const InputStyle = styled.input`
+padding: 0.5rem 2rem;
+border: 1px black solid;
+border-radius: 3px;
+
+`
 
 
 
@@ -24,9 +39,15 @@ export default function SearchForm(props) {
  }
   return (
     <section className="search-form">
+      <NavContainer>
+        <NavStyle to ='/'>Home</NavStyle>
+        <NavStyle to='/characters'>Characters</NavStyle>
+      </NavContainer>
      <form>
-       <input type="text" id="name" placeholder ="search" value ={query}
+       <InputContainer>
+       <InputStyle type="text" id="name" placeholder ="search" value ={query}
        onChange={handleChange}/>
+       </InputContainer>
      </form>
      {data.map((value=> {
        return (

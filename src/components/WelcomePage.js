@@ -9,6 +9,29 @@ justify-content: center;
 
 `
 
+export const NavContainer = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: center;
+margin-top: 2rem;
+margin-bottom: 2rem;
+
+
+
+`
+
+
+export const NavStyle = styled(NavLink)`
+
+padding: 0.5rem 1.2rem; 
+border: none;
+border-radius: 5px;
+background: green; 
+text-decoration: none;
+color:#fff;
+margin-right: 1rem;
+`
+
 export default function WelcomePage() {
   return (
     <section className="welcome-page">
@@ -21,8 +44,10 @@ export default function WelcomePage() {
           alt="rick"
         />
         </ImgContainer>
-        <NavLink to ="/characters">Character List</NavLink>
-        <NavLink to ="/search">Search</NavLink>
+        <NavContainer>
+        <NavStyle to ="/characters">Character List</NavStyle>
+        <NavStyle to ="/search">Search</NavStyle>
+        </NavContainer> 
       </header>
     </section>
   );
